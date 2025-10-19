@@ -1,6 +1,7 @@
 import React, { } from "react";
 import { useLoaderData, useParams } from "react-router";
 import addToStoredDB from "../../Utility/AddToDB";
+import toast from "react-hot-toast";
 
 const BookDetails = () => {
 
@@ -13,6 +14,10 @@ const BookDetails = () => {
 
     console.log(bookData);
 
+
+    const handleWishListClick = () => {
+        toast.error("This feature is not available yet!");
+    }
 
     const handleMarkAsRead = (id) => {
         addToStoredDB(id);
@@ -95,7 +100,7 @@ const BookDetails = () => {
                     <button onClick={() => handleMarkAsRead(bookData.bookId)} className="bg-white text-black border border-[#131313]/30 rounded-lg px-6 py-2 md:px-8 md:py-3 font-semibold text-sm md:text-lg hover:scale-105 transition-transform duration-200">
                         Mark as Read
                     </button>
-                    <button className="bg-[#50B1C9] text-white rounded-lg px-6 py-2 md:px-8 md:py-3 font-semibold text-sm md:text-lg hover:scale-105 transition-transform duration-200">
+                    <button onClick={handleWishListClick} className="bg-[#50B1C9] text-white rounded-lg px-6 py-2 md:px-8 md:py-3 font-semibold text-sm md:text-lg hover:scale-105 transition-transform duration-200">
                         Add to Wishlist
                     </button>
                 </div>
