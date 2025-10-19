@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { NavLink } from "react-router";
 
 const NavBar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -11,16 +12,42 @@ const NavBar = () => {
 
             {/* Middle: Navigation Links */}
             <ul className="hidden md:flex items-center space-x-6">
-                <li className="border border-[#23BE0A] bg-white text-[#23BE0A] px-4 py-2 rounded-md font-semibold">
+                <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                        `px-4 py-2 rounded-md font-semibold transition-colors duration-200 ${isActive
+                            ? "border border-[#23BE0A] bg-white text-[#23BE0A]"
+                            : "text-gray-700 hover:text-[#23BE0A]"
+                        }`
+                    }
+                >
                     Home
-                </li>
+                </NavLink>
 
-                <li className="text-gray-700 font-semibold hover:text-[#23BE0A] transition-colors cursor-pointer">
+                <NavLink
+                    to="/ListedBooks"
+                    className={({ isActive }) =>
+                        `px-4 py-2 rounded-md font-semibold transition-colors duration-200 ${isActive
+                            ? "border border-[#23BE0A] bg-white text-[#23BE0A]"
+                            : "text-gray-700 hover:text-[#23BE0A]"
+                        }`
+                    }
+                >
                     Listed Books
-                </li>
-                <li className="text-gray-700 font-semibold hover:text-[#23BE0A] transition-colors cursor-pointer">
+                </NavLink>
+
+                <NavLink
+                    to="/pages-to-read"
+                    className={({ isActive }) =>
+                        `px-4 py-2 rounded-md font-semibold transition-colors duration-200 ${isActive
+                            ? "border border-[#23BE0A] bg-white text-[#23BE0A]"
+                            : "text-gray-700 hover:text-[#23BE0A]"
+                        }`
+                    }
+                >
                     Pages to Read
-                </li>
+                </NavLink>
+
             </ul>
 
             {/* Right: Auth Buttons */}

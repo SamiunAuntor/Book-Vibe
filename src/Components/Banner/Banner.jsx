@@ -8,7 +8,7 @@ const Banner = () => {
 
                 {/* Left side */}
                 <div className="text-center md:text-left max-w-md space-y-6">
-                    <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-snug">
+                    <h1 className="text-3xl md:text-[50px] font-bold text-gray-900 leading-snug">
                         Books to freshen up your bookshelf
                     </h1>
 

@@ -1,13 +1,19 @@
 import React from 'react';
 import { Outlet } from 'react-router';
 import NavBar from '../../Components/NavBar/NavBar';
+import { Toaster } from 'react-hot-toast';
+
 
 const Root = () => {
     return (
-        <div data-theme="light" className=''>
-            <NavBar></NavBar>
-            <Outlet></Outlet>
-        </div>
+        <>
+            <Toaster position="top-right" reverseOrder={false} />
+            <div data-theme="light" className=''>
+                <NavBar></NavBar>
+                <Outlet></Outlet>
+            </div>
+        </>
+
     );
 };
 
