@@ -4,7 +4,7 @@ import NavBar from '../../Components/NavBar/NavBar';
 
 const Root = () => {
     return (
-        <div className='max-w-[1440px] mx-auto'>
+        <div data-theme="light" className=''>
             <NavBar></NavBar>
             <Outlet></Outlet>
         </div>

@@ -4,7 +4,7 @@ import bannerImg from "../../assets/Banner-Image.png";
 const Banner = () => {
     return (
         <>
-            <section className="bg-[#1313130D] py-12 md:py-16 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between rounded-2xl mt-6 mx-14">
+            <section className="bg-[#1313130D] py-12 md:py-16 px-6 md:px-20 flex flex-col md:flex-row items-center justify-between rounded-2xl mt-6 mx-6">
 
                 {/* Left side */}
                 <div className="text-center md:text-left max-w-md space-y-6">
