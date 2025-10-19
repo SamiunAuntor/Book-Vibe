@@ -1,6 +1,6 @@
 # Book Vibe
 
-[Live Link](#) <!-- Add your live site link here when deployed -->
+[Live Link](https://book-vibe-47b.pages.dev/)
 
 ## Overview
 
