@@ -72,15 +72,44 @@ const NavBar = () => {
             {isOpen && (
                 <div className="absolute top-full left-0 w-full bg-white flex flex-col items-center space-y-4 py-4 md:hidden z-10">
                     <ul className="flex flex-col items-center space-y-4 w-full">
-                        <li className="border border-[#23BE0A] bg-white text-[#23BE0A] px-4 py-2 rounded-md font-semibold w-11/12 text-center">
+                        <NavLink
+                            to="/"
+                            onClick={() => setIsOpen(false)}
+                            className={({ isActive }) =>
+                                `w-11/12 text-center px-4 py-2 rounded-md font-semibold transition-colors duration-200 ${isActive
+                                    ? "border border-[#23BE0A] bg-white text-[#23BE0A]"
+                                    : "text-gray-700 hover:text-[#23BE0A]"
+                                }`
+                            }
+                        >
                             Home
-                        </li>
-                        <li className="text-gray-700 font-semibold hover:text-[#23BE0A] transition-colors cursor-pointer w-11/12 text-center">
+                        </NavLink>
+
+                        <NavLink
+                            to="/ListedBooks"
+                            onClick={() => setIsOpen(false)}
+                            className={({ isActive }) =>
+                                `w-11/12 text-center px-4 py-2 rounded-md font-semibold transition-colors duration-200 ${isActive
+                                    ? "border border-[#23BE0A] bg-white text-[#23BE0A]"
+                                    : "text-gray-700 hover:text-[#23BE0A]"
+                                }`
+                            }
+                        >
                             Listed Books
-                        </li>
-                        <li className="text-gray-700 font-semibold hover:text-[#23BE0A] transition-colors cursor-pointer w-11/12 text-center">
+                        </NavLink>
+
+                        <NavLink
+                            to="/pages-to-read"
+                            onClick={() => setIsOpen(false)}
+                            className={({ isActive }) =>
+                                `w-11/12 text-center px-4 py-2 rounded-md font-semibold transition-colors duration-200 ${isActive
+                                    ? "border border-[#23BE0A] bg-white text-[#23BE0A]"
+                                    : "text-gray-700 hover:text-[#23BE0A]"
+                                }`
+                            }
+                        >
                             Pages to Read
-                        </li>
+                        </NavLink>
                     </ul>
 
                     <div className="flex flex-col items-center space-y-3 w-full">
@@ -93,6 +122,7 @@ const NavBar = () => {
                     </div>
                 </div>
             )}
+
 
         </nav>
     );

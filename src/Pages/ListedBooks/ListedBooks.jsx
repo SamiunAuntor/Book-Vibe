@@ -6,6 +6,25 @@ import ReadListCard from "../../Components/ReadList/ReadListCard/ReadListCard";
 
 const ListedBooks = () => {
 
+    const [sort, setSort] = useState("");
+
+    const handleSort = (type) => {
+        setSort(type);
+
+        let sortedBooks = [...readBooksList];
+
+        if (type === "rating") {
+            sortedBooks.sort((a, b) => b.rating - a.rating);
+        } else if (type === "pages") {
+            sortedBooks.sort((a, b) => b.totalPages - a.totalPages);
+        } else if (type === "year") {
+            sortedBooks.sort((a, b) => b.yearOfPublishing - a.yearOfPublishing);
+        }
+
+        setReadBooksList(sortedBooks);
+    };
+
+
     const booksData = useLoaderData();
     console.log(booksData)
 
@@ -58,24 +77,54 @@ const ListedBooks = () => {
                         onClick={() => setShowSortOptions(!showSortOptions)}
                         className="flex items-center gap-2 bg-[#23BE0A] text-white px-5 py-2 rounded-md font-semibold hover:bg-[#1fa209] transition-colors"
                     >
-                        Sort By <ChevronDown size={18} className={`transition-transform duration-200 ${showSortOptions ? "rotate-180" : ""}`} />
+                        {/* If sort is selected, show "Sort by: type" */}
+                        {sort ? (
+                            <>Sort by : {sort.charAt(0).toUpperCase() + sort.slice(1)}</>
+                        ) : (
+                            <>
+                                Sort By{" "}
+                                <ChevronDown
+                                    size={18}
+                                    className={`transition-transform duration-200 ${showSortOptions ? "rotate-180" : ""}`}
+                                />
+                            </>
+                        )}
                     </button>
 
                     {/* Dropdown Options */}
                     {showSortOptions && (
-                        <div className="absolute top-14 bg-white shadow-md rounded-md flex flex-col w-52 z-10 border border-[#131313]/10">
-                            <span className="bg-[#131313]/5 px-4 py-2 text-sm text-[#131313]/80 cursor-pointer hover:bg-[#131313]/10 text-center">
-                                Rating
+                        <div className="absolute top-14 bg-white shadow-md rounded-md flex flex-col w-60 z-10 border border-[#131313]/10">
+                            <span
+                                onClick={() => {
+                                    handleSort("rating");
+                                    setShowSortOptions(false);
+                                }}
+                                className="bg-[#131313]/5 px-4 py-2 text-sm text-[#131313]/80 cursor-pointer hover:bg-[#131313]/10 text-center"
+                            >
+                                Rating - Highest First
                             </span>
-                            <span className="bg-[#131313]/5 px-4 py-2 text-sm text-[#131313]/80 cursor-pointer hover:bg-[#131313]/10 text-center">
-                                Number of Pages
+                            <span
+                                onClick={() => {
+                                    handleSort("pages");
+                                    setShowSortOptions(false);
+                                }}
+                                className="bg-[#131313]/5 px-4 py-2 text-sm text-[#131313]/80 cursor-pointer hover:bg-[#131313]/10 text-center"
+                            >
+                                Number of Pages - Highest First
                             </span>
-                            <span className="bg-[#131313]/5 px-4 py-2 text-sm text-[#131313]/80 cursor-pointer hover:bg-[#131313]/10 text-center">
-                                Publishing Year
+                            <span
+                                onClick={() => {
+                                    handleSort("year");
+                                    setShowSortOptions(false);
+                                }}
+                                className="bg-[#131313]/5 px-4 py-2 text-sm text-[#131313]/80 cursor-pointer hover:bg-[#131313]/10 text-center"
+                            >
+                                Publishing Year - Latest First
                             </span>
                         </div>
                     )}
                 </div>
+
 
                 {/* Tabs */}
                 <div className="w-full px-6 md:w-full mx-auto mt-10">

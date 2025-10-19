@@ -1,7 +1,13 @@
 import React from 'react';
+import { useNavigate } from "react-router";
 import { Book, User2, CalendarDays, Star } from 'lucide-react';
 
 const ReadListCard = ({ book }) => {
+
+
+    const navigate = useNavigate();
+
+
     return (
         <div className="flex flex-col md:flex-row gap-6 p-6 border border-gray-200 rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow duration-200">
 
@@ -56,9 +62,13 @@ const ReadListCard = ({ book }) => {
                     <span className="flex items-center gap-1 bg-[#FFAC3326] text-[#FFAC33] px-5 py-2 rounded-full text-base font-medium">
                         <Star size={18} className="text-[#FFAC33]" fill="#FFAC33" /> {book.rating}
                     </span>
-                    <button className="bg-[#23BE0A] text-white px-5 py-2 rounded-full text-base font-medium hover:bg-[#1fa209] transition-colors duration-200">
+                    <button
+                        onClick={() => navigate(`/BookDetails/${book.bookId}`)}
+                        className="bg-[#23BE0A] text-white px-5 py-2 rounded-full text-base font-medium hover:bg-[#1fa209] transition-colors duration-200 cursor-pointer"
+                    >
                         View Details
                     </button>
+
                 </div>
             </div>
         </div>
